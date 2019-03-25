@@ -1,0 +1,83 @@
+<!--pages/home/home.wxml-->
+<import src="../../components/head.wxml"/>
+
+<template is="head" data="{{info:'Anitech', hasBack: false}}"/>
+<image src='../../images/background.png' class='bg' wx:if="{{!petList.length}}"></image>
+<view class='home-container'>
+  <block wx:if="{{!petList.length}}">
+    <view class='add-item' bindtap='toAddPet'>
+        <image src='../../images/icons/add-small.png'></image>
+        <text>pet</text>
+    </view>
+    <text class='line'/>
+    <text class='info'>暂无设备请您添加</text>
+    <view class='add-button' bindtap='toTip'>
+      <image src='../../images/icons/add-small.png' class='add-icon'></image>
+      <text>添加设备</text>
+    </view>
+  </block>
+  <block wx:else>
+    <swiper previous-margin="120px" next-margin="120px" class='swiper'>
+      <block wx:for="{{petList}}">
+        <swiper-item class="swiper-item-container">
+          <view class="swiper-item {{ petIndex == index ? 'choose-item': ''}} " data-id="{{item.pet_id}}" data-petindex="{{index}}" bindtap='swiperchange'>
+            <image src="{{item.avatar}}" class="slide-image" class='swiper-image'/>
+          </view>
+        </swiper-item>
+      </block>
+      <swiper-item class="swiper-item-container">
+        <view class='add-item' bindtap='toAddPet'>
+          <image src='../../images/icons/add-small.png'></image>
+          <text>pet</text>
+        </view>
+      </swiper-item>
+    </swiper>
+    
+    <block wx:if="{{petId}}">
+      <view class='device-container'>
+<!--
+        <view class='ble-test-button' bindtap='toBleTest'>
+          <text>蓝牙测试入口</text>
+        </view>
+-->
+
+        <view class='add-button' bindtap='toAddEquipment'>
+          <image src='../../images/icons/add-small.png' class='add-icon'></image>
+          <text>添加设备</text>
+        </view>
+
+        <swiper class='swiper-container'  indicator-dots='{{true}}' wx:if="{{deviceList.length}}" current='{{currentIndex}}'>
+          <swiper-item wx:for="{{deviceList}}" wx:key="item_{{item.id}}">
+            <view class="device-name">
+              <text>{{item.device_name || ''}}</text>
+            </view>
+            <view class='light-container'>
+              <!-- <block wx:if='{{ img[index] }}'>
+                  <image src='{{ img[index] }}' class='canvastoimage' ></image>
+                  <view class='unlock-container' wx:if="{{item.lock_status}}">
+                    <image src='../../images/icons/unlock.png' class='lock'></image>
+                  </view>
+                  <view class='lock-container' wx:else>
+                    <image src='../../images/icons/lock.png' class='lock'></image>
+                  </view>
+              </block> -->
+              <image src='{{ img[index] }}' class='light-power'></image>
+              <!-- <text wx:else>正在加载中...</text> -->
+            </view>
+            <view style='text-align:center;' class='tolight-container'>
+              <view class='tolight {{item.lock_status? "" : "gray" }}' bindtap='gotolight' data-id='{{item.device_id}}'>
+                <image src='../../images/icons/always_light.png' class='tolight-image'></image>
+                <text>灯光 </text>
+              </view>
+            </view>
+          </swiper-item>
+        </swiper>
+        <view wx:else class='tips'>此宝贝暂无绑定设备</view>
+      </view>
+    </block>
+    <view wx:else class='tips'>请先选择宝贝</view>
+    <!-- <view class='canvas-container' wx:if='{{show}}'>
+      <ec-canvas id="mychart-dom" ec="{{ ec }}"></ec-canvas>
+    </view> -->
+  </block>
+</view>

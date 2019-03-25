@@ -1,0 +1,6 @@
+<template name="head">
+  <view class='head-container'>
+    {{ info }}
+    <image src='../../images/icons/back.png' class='back-icon' wx:if="{{hasBack}}" bindtap='toBack'></image>
+  </view>
+</template>

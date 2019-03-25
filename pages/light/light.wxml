@@ -1,0 +1,48 @@
+<!--pages/light/light.wxml-->
+<import src="../../components/head.wxml"/>
+
+<template is="head" data="{{info:'灯光设置', hasBack: true}}"/>
+<view class='block border-gray'>
+  <view class='block-title'>
+    <text class='line'/>
+    <text>灯光设置</text>
+  </view>
+  <checkbox-group bindchange="checkboxChange" class='switch'>
+    <label >
+      <checkbox class='switch-check' checked='{{ open }}' value='open'/>
+      <view class='slide {{open ? "slide-color" : ""}}'></view>
+    </label>
+  </checkbox-group>
+</view>
+<view class='four-item'>
+  <text class='normal-line'/>
+  <view class='item' bindtap='changemode' data-type="auto">
+    <image src='{{ open && mode == "auto" ? "../../images/icons/automatic.png" : "../../images/icons/automatic_gray.png" }}' class='icon1' ></image>
+    <text>自动</text>
+  </view>
+  <text class='gray-line normal-line'/>
+  <view class='item' bindtap='changemode' data-type="scroll">
+    <image src='{{ open && mode == "scroll" ? "../../images/icons/scroll.png" : "../../images/icons/scroll_gray.png" }}'  class='icon2'></image>
+    <text>滚动</text>
+  </view>
+  <text class='gray-line normal-line'/>
+  <view class='item' bindtap='changemode' data-type='always'>
+    <image src='{{ open && mode == "always" ? "../../images/icons/flash.png" : "../../images/icons/flash_gray.png" }}' class='icon3' ></image>
+    <text>常亮</text>
+  </view>
+  <text class='gray-line normal-line'/>
+  <view class='item' bindtap='changemode' data-type="breathe">
+    <image src='{{ open && mode == "breathe" ? "../../images/icons/breathe.png" : "../../images/icons/breathe_gray.png" }}' class='icon4'></image>
+    <text>呼吸</text>
+  </view>
+  <text class='normal-line'/>
+</view>
+<view class='border-gray'>
+  <view class='block-title'>
+    <text class='line'/>
+    <text>灯光颜色</text>
+  </view>
+</view>
+<view class='canvas-container'>
+  <canvas class="canvas-element" canvas-id="canvas" disable-scroll='{{true}}' style="width: 320px; height: 320px;" bindtouchstart="toDrag"></canvas>
+</view>

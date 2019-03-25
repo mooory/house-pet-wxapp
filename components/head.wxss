@@ -1,0 +1,17 @@
+.head-container {
+  height: 180rpx;
+  text-align: center;
+  line-height: 240rpx;
+  background: linear-gradient(to right, #FA3252, #A545A1);
+  font-size:40rpx;
+  font-family:PingFangSC-Regular;
+  color: #fff;
+  position: relative;
+}
+.back-icon {
+  position: absolute;
+  width: 50rpx;
+  height: 40rpx;
+  top: 100rpx;
+  left: 32rpx;
+}

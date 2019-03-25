@@ -1,0 +1,52 @@
+<!--pages/addPet/addPet.wxml-->
+<import src="../../components/head.wxml"/>
+
+<template is="head" data="{{info:'填写宝贝资料', hasBack: true}}"/>
+<view class='container'>
+  <view class='info-message'>
+    <icon type='info' color="orange" size="14"></icon>
+    <text>温馨提示：要记得上传头像哦~</text>
+  </view>
+  <view class='avatar' bindtap="chooseAvatar">
+    <image src="{{avatar ? avatar: '../../images/defaultpet.png'}}"></image>
+    <text class='avatar-text'>上传头像</text>
+  </view>
+  <form class='form' bindsubmit="formSubmit">
+    <view class='item'>
+      <image src='./../../images/icons/pet.png'></image>
+      <input name="name" placeholder="宝贝姓名" placeholder-class="input-placeholder" type="text"   bindinput="bindKeyInput"/>
+    </view>
+    <view class='item'>
+      <image src='./../../images/icons/birthday.png'></image>
+      <picker name="birthday" range="{{ages}}" bindchange="bindPickerAge" value="{{index}}" >
+        <view class='picker-container'>
+          <text class='{{ ageIndex && "choose"}}'>{{ageIndex ? ages[ageIndex] + ' 岁' : '年龄'}}</text>
+          <image src='./../../images/icons/arrow_bottom.png'></image>
+        </view>
+      </picker>
+    </view>
+    <view class='item'>
+      <image src='./../../images/icons/sex.png'></image>
+      <picker name="sex" range="{{sex}}" bindchange="bindPickerSex" value="{{index}}">
+        <view class='picker-container'>
+          <text class='{{ sexIndex && "choose"}}'>{{ sexIndex ? sex[sexIndex] : '性别' }}</text>
+          <image src='./../../images/icons/arrow_bottom.png'></image>
+        </view>
+      </picker>
+    </view>
+    <view class='item'>
+      <image src='./../../images/icons/category.png'></image>
+      <picker name="pet_breed" range="{{breed}}" bindchange="bindPickerBreed" value="{{index}}">
+        <view class='picker-container'>
+          <text class='{{ breedIndex && "choose"}}'>{{ breedIndex ? breed[breedIndex] : '品种'}}</text>
+          <image src='./../../images/icons/arrow_bottom.png'></image>
+        </view>
+      </picker>
+    </view>
+    <view>
+      <button formType="submit" class="confirm-btn" hover-class="btn-hover"
+              hover-class="btn-hover">提交
+      </button>
+    </view>
+  </form>
+</view>

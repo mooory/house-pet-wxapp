@@ -1,0 +1,23 @@
+<!--pages/myEquip/myEquip.wxml-->
+<view class='head-container'>
+  <text>我的</text>
+  <text>{{phone}}</text>
+</view>
+<view class='bg'></view>
+<view class='my-container'>
+  <block wx:if="{{list.length}}">
+    <view class='item' bindtap="todevice" wx:for="{{list}}" data-petid='{{item.pet_id}}' data-deviceid='{{item.device_id}}'>
+      <image src='../../images/icons/machine.png' class='equipment-image'></image>
+      <text>{{item.device_name}}</text>
+      <image src="{{item.pet_avatar}}" class='avatar-image'></image>
+    </view>
+  </block>
+  <view class='info' wx:else>
+    暂无设备
+  </view>
+  <view>
+    <button bindtap="logout" class="confirm-btn" hover-class="btn-hover"
+        hover-class="btn-hover">退出登录
+    </button>
+  </view>
+</view>

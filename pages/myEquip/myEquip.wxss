@@ -1,0 +1,77 @@
+/* pages/myEquip/myEquip.wxss */
+.head-container {
+  background: linear-gradient(to right, #FA3252, #A545A1);
+  color: #fff;
+  padding: 64rpx 0 20rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 122rpx;
+  font-size:18px;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+}
+
+.bg {
+  background-color: #F0F2F5;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: -1; 
+}
+
+.my-container {
+  padding: 36rpx 42rpx;
+}
+
+.item {
+  background:rgba(255,255,255,1);
+  border-radius:16rpx;
+  height:142rpx;
+  box-shadow:0px 2px 10px 0px rgba(216,216,216,1);
+  font-size:36rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(0,0,0,1);
+  line-height: 142rpx;
+  overflow: hidden;
+  position: relative;
+  margin-top: 30rpx;
+}
+
+.equipment-image {
+  width: 54rpx;
+  height: 54rpx;
+  vertical-align: -12rpx;
+  margin: 0 32rpx 0 40rpx;
+}
+
+.avatar-image {
+  position: absolute;
+  right: 40rpx;
+  top: 26rpx;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+}
+
+.info {
+  margin: 200rpx 0;
+  text-align: center;
+  color: rgb(190, 187, 187);
+}
+
+.confirm-btn {
+    margin:40rpx 0;
+    background:linear-gradient(90deg,rgba(250,50,82,1) 0%,rgba(165,69,161,1) 100%);
+    border-radius:16rpx;
+    color:#fff;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    font-size: 32rpx;
+}
+
+.btn-hover {
+    opacity: 0.7;
+}

@@ -1,0 +1,18 @@
+<!--pages/addEquipment/addEquipment.wxml-->
+<import src="../../components/head.wxml"/>
+
+<template is="head" data="{{info:'选择添加设备', hasBack: true}}"/>
+<view class='add-container'>
+  <view class='title'>请先将设备通电，我们将自动扫描附件设备</view>
+  <view class='sub-title'>查看设备通电方式</view>
+  <block wx:if="{{list.length}}">
+    <view class='item' bindtap="toscan" wx:for="{{list}}">
+      <image src='../../images/icons/machine.png' class='equipment-image'></image>
+      <text>{{item.name}}</text>
+      <image src='../../images/icons/arrow_right.png' class='tomore-image'></image>
+    </view>
+  </block>
+  <view class='info' wx:else>
+    暂无设备
+  </view>
+</view>

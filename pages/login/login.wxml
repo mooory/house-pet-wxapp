@@ -1,0 +1,33 @@
+<view class="login-container">
+    <image src='./../../images/icons/anitech.png' class='app-icon'></image>
+    <text class='login-info'>登录</text>
+    <text class='line'/>
+    <form bindsubmit="formSubmit" class='form'>
+        <view class='item-number'>
+            <image src='./../../images/icons/phone.png'></image>
+            <input name="mobile" placeholder="手机号码" placeholder-class="input-placeholder" type="number"   bindinput="bindKeyInput"/>
+        </view>
+        <view class='item-verify'>
+            <view class='left24'>
+              <input class="input" name="code" placeholder="输入验证码" placeholder-class="input-placeholder" bindinput="bindVerify" value="{{code}}" type='number'/>
+            </view>
+            <button class='verify-button' hover-class="btn-hover" bindtap="getVerify" disabled='{{second ? true:false }}'>
+              {{second ? '已获取('+second+'s)':'获取验证码'}}
+            </button>
+        </view>
+        <view>
+            <button formType="submit" class="login-btn" hover-class="btn-hover"
+                    hover-class="btn-hover">立即登录
+            </button>
+        </view>
+        <!-- <view>
+            <button open-type="getUserInfo" size="mini" plain="true" class="login-btn" hover-class="other-button-hover"
+                    hover-class="btn-hover" bindgetuserinfo="handleGetUserInfo"><i class="fa fa-wechat"></i>微信登录
+            </button>
+
+        </view> -->
+        <!--<view>-->
+            <!--<navigator url="/pages/register/register" redirect class="register">30秒快速注册</navigator>-->
+        <!--</view>-->
+    </form>
+</view>

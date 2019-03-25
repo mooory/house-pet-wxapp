@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/addPet/addPet",
+    "pages/home/home",
+    "pages/addEquipment/addEquipment",
+    "pages/myEquip/myEquip",
+    "pages/ble/ble",
+    "pages/light/light",
+    "pages/change_light/change_light"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#c74444",
+    "navigationBarTitleText": "扫描二维码",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4a4a4a",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "text": "设备",
+        "pagePath": "pages/home/home",
+        "iconPath": "images/icons/machine.png",
+        "selectedIconPath": "images/icons/machine-check.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/myEquip/myEquip",
+        "iconPath": "images/icons/me.png",
+        "selectedIconPath": "images/icons/me-check.png"
+      }
+    ]
+  },
+  "debug": true
+}

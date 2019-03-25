@@ -1,0 +1,144 @@
+<!--pages/change_light/change_light.wxml-->
+<import src="../../components/head.wxml"/>
+
+<template is="head" data="{{info:'灯光设置', hasBack: true}}"/>
+<view class="item-container">
+  <view class='item {{ light_tab == 1 ? (open ? "choose-item open" : "choose-item") : ""}}' bindtap='changemode' data-type="{{1}}">
+    <text>蓝粉</text>
+    <text>跑马</text>
+  </view>
+  <view class='item {{ light_tab == 2 ? (open ? "choose-item open" : "choose-item") : ""}}' bindtap='changemode' data-type="{{2}}" >
+    <text>红色</text>
+    <text>呼吸</text>
+  </view>
+  <view class='item {{ light_tab == 3 ? (open ? "choose-item open" : "choose-item") : ""}}' bindtap='changemode' data-type="{{3}}" >
+    <text>绿色</text>
+    <text>闪烁</text>
+  </view>
+  <view class='item {{ light_tab == 4 ? (open ? "choose-item open" : "choose-item") : ""}}' bindtap='changemode' data-type="{{4}}" >
+    <text>红色</text>
+    <text>常亮</text>
+  </view>
+  <view class='item {{ light_tab == 5 ? (open ? "choose-item open" : "choose-item") : ""}}' bindtap='changemode' data-type="{{5}}" >
+    <text>多彩</text>
+    <text>跑马</text>
+  </view>
+  <view class='item {{ light_tab == 6 ? (open ? "choose-item open" : "choose-item") : ""}}' bindtap='changemode' data-type="{{6}}" >
+    <image src="{{ light_tab == 6 && open ? '../../images/icons/diy.png' : '../../images/icons/diy_gray.png'}}" class='icondiy'></image>
+    <text>DIY</text>
+  </view>
+</view>
+<view class='light-container' >
+  <image src='../../images/light_back.png' class='light-back'></image>
+  <view hidden="{{ light_tab != 6 }}">
+      <image src='{{ image1 }}' class='part1' bindtap='changeColor' data-type='{{1}}'></image>
+      <image src='{{ image2 }}' class='part2' bindtap='changeColor' data-type='{{2}}'></image>
+      <image src='{{ image3 }}' class='part3' bindtap='changeColor' data-type='{{3}}'></image>
+      <image src='{{ image4 }}' class='part4' bindtap='changeColor' data-type='{{4}}'></image>
+      <image src='{{ image5 }}' class='part5' bindtap='changeColor' data-type='{{5}}'></image>
+      <!-- <image src='{{ image6 }}' class='part6' bindtap='changeColor' data-type='{{6}}'></image>
+      <image src='{{ image7 }}' class='part7' bindtap='changeColor' data-type='{{7}}'></image>
+      <image src='{{ image8 }}' class='part8' bindtap='changeColor' data-type='{{8}}'></image> -->
+  </view>
+  <image src='{{imageBack}}' hidden="{{ light_tab == 6 }}" class='light-static'></image>
+</view>
+<view class='title'>
+  <text class='title-content'>灯光模式</text>
+</view>
+<view class='four-item'>
+  <text class='normal-line'/>
+  <view class='item' bindtap='changelight' data-type="{{1}}">
+    <image src='{{ open && light_pattern == 1 ? "../../images/icons/automatic.png" : "../../images/icons/automatic_gray.png" }}' class='icon1' ></image>
+    <text>呼吸频率</text>
+  </view>
+  <text class='gray-line normal-line'/>
+  <view class='item' bindtap='changelight' data-type="{{2}}">
+    <image src='{{ open && light_pattern == 2 ? "../../images/icons/run.png" : "../../images/icons/run_gray.png" }}'  class='icon2'></image>
+    <text>跑马灯速度</text>
+  </view>
+  <text class='gray-line normal-line'/>
+  <view class='item' bindtap='changelight' data-type='{{3}}'>
+    <image src='{{ open && light_pattern == 3 ? "../../images/icons/flash.png" : "../../images/icons/flash_gray.png" }}' class='icon3' ></image>
+    <text>闪烁模式</text>
+  </view>
+  <text class='gray-line normal-line'/>
+  <view class='item' bindtap='changelight' data-type="{{4}}">
+    <image src='{{ open && light_pattern == 4 ? "../../images/icons/breathe.png" : "../../images/icons/breathe_gray.png" }}' class='icon4'></image>
+    <text>常亮模式</text>
+  </view>
+  <text class='normal-line'/>
+</view>
+<view class='four-item padding21'>
+  <text>顺时针方向</text>
+  <switch checked="{{ direction }}" bindchange="switchChange" color='#C33056'/>
+</view>
+<view class='four-item padding30'>
+  <text>速度选择</text>
+  <!-- <text class='gray-line normal-line'/> -->
+  <view class='item' bindtap='changespeed' data-type="{{1}}">
+    <image src='{{ open && speed == 1 ? "../../images/icons/speedlow.png" : "../../images/icons/speedlow_gray.png" }}'  class='icon5'></image>
+    <text class='{{ speed==1 && "choose"}}'>低速</text>
+  </view>
+  <text class='gray-line normal-line'/>
+  <view class='item' bindtap='changespeed' data-type='{{2}}'>
+    <image src='{{ open && speed == 2 ? "../../images/icons/speednormal.png" : "../../images/icons/speednormal_gray.png" }}' class='icon6' ></image>
+    <text class='{{ speed==2 && "choose"}}'>正常</text>
+  </view>
+  <text class='gray-line normal-line'/>
+  <view class='item' bindtap='changespeed' data-type="{{3}}">
+    <image src='{{ open && speed == 3 ? "../../images/icons/speedhigh.png" : "../../images/icons/speedhigh_gray.png" }}' class='icon5'></image>
+    <text class='{{ speed==3 && "choose"}}'>快速</text>
+  </view>
+</view>
+<view>
+  <button bindtap="save" class="confirm-btn" hover-class="btn-hover"
+          hover-class="btn-hover">保存设置
+  </button>
+</view>
+<view class="modalDlg" wx:if="{{showModal}}">
+  <view class='modal-title'>
+    <image src='../../images/color_circle.png' class='circle'></image>
+    <text>颜色选择</text>
+  </view>
+  <view class='color-container'>
+    <view wx:for="{{ showColor1 }}" data-type='{{item.data}}' bindtap='pickColor' style='background-color: {{item.color}};' class='color-item'>
+      <view wx:if="{{ currentColor==item.data}}">
+          <view class='showOutCircle' style='border-color: {{item.color}};'></view>
+          <view class='showTick'></view>
+      </view>
+    </view>
+  </view>
+  <view class='color-container'>
+    <view wx:for="{{ showColor2 }}" data-type='{{item.data}}' bindtap='pickColor' style='background-color: {{item.color}};' class='color-item'>
+      <view wx:if="{{ currentColor==item.data}}">
+          <view class='showOutCircle' style='border-color: {{item.color}};'></view>
+          <view class='showTick'></view>
+      </view>
+    </view>
+  </view>
+  <view class='color-container'>
+    <view wx:for="{{ showColor3 }}" data-type='{{item.data}}' bindtap='pickColor' style='background-color: {{item.color}};' class='color-item'>
+      <view wx:if="{{ currentColor==item.data}}">
+          <view class='showOutCircle' style='border-color: {{item.color}};'></view>
+          <view class='showTick'></view>
+      </view>
+    </view>
+    
+  </view>
+  <view style='width:100%; padding-left:36rpx;'>
+    <view class='last-color-container'>
+      <view data-type='{{21}}' style='border:1px solid rgba(216,216,216,1);' bindtap='pickColor' class='color-item'>
+        <view wx:if="{{ currentColor==21}}">
+            <view class='showOutCircle' style='border-color:rgba(216,216,216,1);'></view>
+        </view>
+      </view>
+      <view data-type='{{22}}' style=' background-color: #D8D8D8;' bindtap='pickColor' class='color-item'>
+        空
+        <view wx:if="{{ currentColor==22}}">
+            <view class='showOutCircle' style='border-color:#D8D8D8;'></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="mask" bindtap="changeShowModal" wx:if="{{showModal}}"></view>

@@ -1,0 +1,56 @@
+/* pages/addEquipment/addEquipment.wxss */
+@import '../../components/head.wxss';
+.add-container {
+  padding: 36rpx 42rpx 0 42rpx;
+}
+
+.title {
+  font-size:32rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(155,155,155,1);
+  margin-bottom: 14rpx;
+}
+
+.sub-title {
+  font-size: 28rpx;
+  font-family:PingFangSC-Medium;
+  font-weight: 500;
+  color:rgba(74,74,74,1);
+}
+
+.item {
+  background:rgba(255,255,255,1);
+  border-radius:16rpx;
+  height:142rpx;
+  box-shadow:0px 2px 10px 0px rgba(216,216,216,1);
+  font-size:36rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(0,0,0,1);
+  line-height: 142rpx;
+  overflow: hidden;
+  position: relative;
+  margin-top: 30rpx;
+}
+
+.equipment-image {
+  width: 54rpx;
+  height: 54rpx;
+  vertical-align: -12rpx;
+  margin: 0 32rpx 0 40rpx;
+}
+
+.tomore-image {
+  position: absolute;
+  right: 40rpx;
+  top: 54rpx;
+  width: 20rpx;
+  height: 36rpx;
+}
+
+.info {
+  margin: 200rpx 0;
+  text-align: center;
+  color: rgba(216,216,216,1);
+}
